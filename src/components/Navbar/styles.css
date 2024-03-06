@@ -1,0 +1,11 @@
+.nav-item {
+  width: 128px;
+  height: 48px;
+}
+
+.nav-sign-up {
+  border-radius: 20px;
+  background: #42b3a2;
+  color: white;
+  text-align: center;
+}
