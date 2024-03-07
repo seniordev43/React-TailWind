@@ -3,6 +3,8 @@
 
 body {
   font-family: "Avenir Next";
+  height: 100%;
+  margin: 0;
 }
 
 svg.star-svg {

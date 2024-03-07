@@ -8,15 +8,20 @@ const SearchBox = () => {
       <div className=" flex flex-wrap items-center bg-white rounded-full sm:min-w-[600px] outline-none mx-auto px-3 py-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1em"
-          height="1em"
-          viewBox="0 0 24 24"
+          width="20px"
+          height="20px"
+          viewBox="0 0 48 48"
           className="mr-2"
         >
-          <path
-            fill="currentColor"
-            d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.977 6.977 0 0 0 4.875-1.975z"
-          ></path>
+          <g
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx={17.808} cy={17.804} r={13.041}></circle>
+            <path d="m28.903 32.01l3.225-3.226l9.755 9.755l-3.226 3.225zm1.483-4.963l-3.222 3.223"></path>
+          </g>
         </svg>
         <input
           className="flex-1 outline-none"
