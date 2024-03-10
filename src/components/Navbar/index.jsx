@@ -1,9 +1,181 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
+
 import Button from "../Elements/Button";
+
+const DropDownComponent = ({ title, data }) => (
+  <Dropdown>
+    <Dropdown.Toggle as={CustomToggle}>{title}</Dropdown.Toggle>
+    <Dropdown.Menu>
+      <Dropdown.Item>
+        <div className="flex p-4 gap-4">
+          <div className="flex flex-col gap-3 m-0">
+            <span className="font-bold text-[18px]">
+              {title === "Destinations"
+                ? "Popular Outdoor Destinations"
+                : "Popular Activities"}
+            </span>
+            <div className="flex gap-24">
+              {data.map((colItems, index) => (
+                <div className="flex flex-col gap-1" key={`col${index}`}>
+                  {colItems.map((item, index) => (
+                    <span
+                      className="flex whitespace-nowrap text=[#2F2F2E] hover:text-[#42B3A2] text-[#2F2F2E] hover:underline"
+                      key={`item${index}`}
+                    >
+                      {item}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16px"
+                        height="16px"
+                        viewBox="0 0 20 48"
+                        className="mt-1 ml-2"
+                      >
+                        <path
+                          fill="none"
+                          stroke="#2F2F2E"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={4}
+                          d="m19 12l12 12l-12 12"
+                        ></path>
+                      </svg>
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <span className="flex whitespace-nowrap text=[#2F2F2E] hover:text-[#42B3A2]  hover:underline">
+              See all destination
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                height="16px"
+                viewBox="0 0 20 48"
+                className="mt-1 ml-2"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={4}
+                  d="m19 12l12 12l-12 12"
+                ></path>
+              </svg>
+            </span>
+          </div>
+          {title === "Activities" && (
+            <div className="flex flex-col gap-3 w-[180px]" key="img">
+              <span className="font-bold text-[18px]">Upcoming</span>
+              {[1, 2].map((subItem) => (
+                <div key={subItem}>
+                  <img
+                    src="src/assets/amazing1.png"
+                    className="w-full h-[100px] object-cover rounded-2xl"
+                    alt="img"
+                  />
+                  <p className="font-bold text-[14px] mt-2">
+                    Deschutes River, Oregon
+                  </p>
+                  <p className="text-[12px] text-[#838381]">25.04.2023</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+);
+
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+  <a
+    href=""
+    ref={ref}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick(e);
+    }}
+    className="flex"
+  >
+    {children}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16px"
+      height="16px"
+      viewBox="0 0 48 24"
+      className="ml-2"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={4}
+        d="M36 18L24 30L12 18"
+      ></path>
+    </svg>
+  </a>
+));
 
 const Navbar = () => {
   const { pathname } = useLocation();
+
+  const destinations = [
+    [
+      "Anchorage",
+      "Atlanta",
+      "Austin",
+      "Boston",
+      "Chicago",
+      "Denver",
+      "Houston",
+      "Las Vegas",
+      "Los Angeles",
+      "Maui",
+    ],
+    [
+      "Miami",
+      "New York",
+      "Orland",
+      "Phoenix",
+      "Portland",
+      "Salt Lake City",
+      "San Diego",
+      "San Francisco",
+      "Seattle",
+      "Tampa",
+    ],
+  ];
+
+  const activities = [
+    [
+      "Animals",
+      "Fishing Charters",
+      "Rock Climbing",
+      "Backpacking",
+      "Day trips",
+      "Horse Riding",
+      "Kayaking",
+      "Photography",
+      "Mountain Biking",
+      "Scuba Diving",
+    ],
+    [
+      "Survival Tranining",
+      "Hunting",
+      "Snowboarding",
+      "Skiing",
+      "Snowshoeing",
+      "Sledding",
+      "Overlanding",
+      "4x4ing",
+      "ATVs",
+      "Motorcycling",
+    ],
+  ];
 
   return (
     <div className="shadow-md">
@@ -39,12 +211,9 @@ const Navbar = () => {
               />
             </div>
           )}
-          <a href="#" className="hidden md:inline">
-            Destinations
-          </a>
-          <a href="#" className="hidden md:inline">
-            Activities
-          </a>
+
+          <DropDownComponent title="Destinations" data={destinations} />
+          <DropDownComponent title="Activities" data={activities} />
           <a href="#" className="hidden md:inline">
             Learn
           </a>
