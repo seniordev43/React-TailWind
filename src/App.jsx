@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 // Components
@@ -8,6 +10,7 @@ import Footer from "./components/Footer";
 // Pages
 import Home from "./pages/Home";
 import Search from "./pages/Search";
+import Detail from "./pages/Detail";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -31,6 +34,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home windowWidth={windowWidth} />} />
           <Route path="/search" element={<Search />} />
+          <Route
+            path="/detail"
+            element={<Detail windowWidth={windowWidth} />}
+          />
         </Routes>
         <Footer />
       </Router>

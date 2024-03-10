@@ -5,13 +5,14 @@ const Button = ({
   textColor = "black",
   small = false,
   leftIcon = null,
+  opacity = 90,
   ...propStyle
 }) => {
   return (
     <button
       className={`flex px-${
         small ? 2 : 4
-      } py-2 rounded-full text-bas ${extraClass}`}
+      } opacity-${opacity} py-2 rounded-full text-bas ${extraClass}`}
       style={{ background: bgColor, color: textColor, ...propStyle }}
     >
       {!!leftIcon && leftIcon}

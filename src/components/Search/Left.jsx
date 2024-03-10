@@ -126,7 +126,7 @@ const Left = () => {
         </span>
         <div className="flex flex-col gap-16">
           {[1, 2, 3, 4].map((item) => (
-            <Card data={item} />
+            <Card data={item} key={item} />
           ))}
         </div>
         <div className="flex justify-around">

@@ -1,9 +1,12 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import Button from "../Elements/Button";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+
   return (
-    <>
+    <div className="shadow-md">
       <header className="p-4 flex justify-between items-center container lg:mw-[1240px] ">
         <img
           src="src/assets/logo.png"
@@ -11,29 +14,31 @@ const Navbar = () => {
           className="sm:w-32 md:w-44 lg:w-56"
         />
         <nav className="flex items-center justify-center sm:gap-2 md:gap-10">
-          <div className="flex-wrap items-center bg-white rounded-full outline-none mx-auto px-3 py-2 border-1  hidden md:flex">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 48 48"
-              className="mr-2"
-            >
-              <g
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          {pathname !== "/" && (
+            <div className="flex-wrap items-center bg-white rounded-full outline-none mx-auto px-3 py-2 border-1  hidden md:flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="0 0 48 48"
+                className="mr-2"
               >
-                <circle cx={17.808} cy={17.804} r={13.041}></circle>
-                <path d="m28.903 32.01l3.225-3.226l9.755 9.755l-3.226 3.225zm1.483-4.963l-3.222 3.223"></path>
-              </g>
-            </svg>
-            <input
-              className="flex-1 outline-none"
-              placeholder="Deschutes River, Oregon"
-            />
-          </div>
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx={17.808} cy={17.804} r={13.041}></circle>
+                  <path d="m28.903 32.01l3.225-3.226l9.755 9.755l-3.226 3.225zm1.483-4.963l-3.222 3.223"></path>
+                </g>
+              </svg>
+              <input
+                className="flex-1 outline-none"
+                placeholder="Deschutes River, Oregon"
+              />
+            </div>
+          )}
           <a href="#" className="hidden md:inline">
             Destinations
           </a>
@@ -98,7 +103,7 @@ const Navbar = () => {
           </svg>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
