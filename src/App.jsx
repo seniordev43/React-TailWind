@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="bg-[#FCF9F2]">
       <Router>
-        <Navbar />
+        <Navbar windowWidth={windowWidth} />
         <Routes>
           <Route path="/" element={<Home windowWidth={windowWidth} />} />
           <Route path="/search" element={<Search />} />

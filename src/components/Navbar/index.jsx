@@ -120,7 +120,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   </a>
 ));
 
-const Navbar = () => {
+const Navbar = ({ windowWidth }) => {
   const { pathname } = useLocation();
 
   const destinations = [
@@ -211,14 +211,22 @@ const Navbar = () => {
               />
             </div>
           )}
-
-          <DropDownComponent title="Destinations" data={destinations} />
-          <DropDownComponent title="Activities" data={activities} />
+          {windowWidth > 768 && (
+            <>
+              <DropDownComponent title="Destinations" data={destinations} />
+              <DropDownComponent title="Activities" data={activities} />
+            </>
+          )}
           <a href="#" className="hidden md:inline">
             Learn
           </a>
 
-          <Button text="Sign up" bgColor="#42b3a2" textColor="white" small />
+          <Button
+            text="Sign up"
+            bgColor="#42b3a2"
+            textColor="white"
+            small={windowWidth < 768}
+          />
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
